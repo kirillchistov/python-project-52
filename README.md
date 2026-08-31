@@ -2,7 +2,7 @@
 
 [![hexlet-check](https://github.com/kirillchistov/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kirillchistov/python-project-52/actions)
 
-**Демо на Render:** _вставьте URL после деплоя, например `https://hexlet-code.onrender.com`_
+**Демо на Render:** [https://python-project-52-8j2t.onrender.com/](https://python-project-52-8j2t.onrender.com/)
 
 - Task Manager — система управления задачами, подобная [Redmine](http://www.redmine.org/). В ней можно ставить задачи, назначать исполнителей, менять статусы задач, помечать их метками и фильтровать список по любому из этих признаков. Для работы с системой требуется регистрация и аутентификация: гость видит только главную страницу и список пользователей.
 - Проект включает проектирование базы данных, PaaS, мониторинг ошибок, ORM, фреймворк Django, шаблонизацию и Bootstrap 5.
@@ -46,7 +46,7 @@ make render-start # запуск как на Render (gunicorn)
 
 ## Деплой на Render (шаг 1)
 
-Эти шаги делаются в браузере один раз. Код уже готов: `make build` и `make render-start`.
+Один раз: `make build` и `make render-start`.
 
 1. Заведите аккаунт на [render.com](https://render.com). Если вы из РФ, укажите другую страну и «для учебных целей».
 2. Закоммитьте и запушьте этот репозиторий на GitHub (когда будете готовы — напишите, закоммитим вместе).
@@ -62,7 +62,7 @@ make render-start # запуск как на Render (gunicorn)
 6. Дождитесь деплоя, откройте `https://<имя-сервиса>.onrender.com` — должна быть страница «Привет от Хекслета!».
 7. Вставьте эту ссылку вместо плейсхолдера в начале README и закоммитьте ещё раз.
 
-Если Render ругается на версию Python, в репозитории нет `.python-version` — так и задумано (подсказка Хекслета).
+
 
 ---
 
@@ -84,8 +84,8 @@ make render-start # запуск как на Render (gunicorn)
 - [x] Настройте базовое окружение, которое после старта на (/) выдает приветствие
 - [x] Заведите аккаунт на render.com. Укажите страну не РФ «для учебных целей»
 - [x] Скрипт `build.sh`, цели Makefile: `build`, `setup`, `render-start`
-- [ ] Создайте Web Service и PostgreSQL на Render, выполните деплой
-- [ ] Добавьте в README.md ссылку на задеплоенное приложение
+- [x] Создайте Web Service и PostgreSQL на Render, выполните деплой
+- [x] Добавьте в README.md [ссылку на задеплоенное приложение](https://python-project-52-8j2t.onrender.com/)
 
 ## О Хекслете
 
