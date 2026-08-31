@@ -1,6 +1,6 @@
 """Представления верхнего уровня.
 
-IndexView — GET / отдаёт приветствие (цель шага 1).
+IndexView — GET / отдаёт главную через DjangoTemplates (серверный рендер).
 """
 
 from django.views.generic import TemplateView

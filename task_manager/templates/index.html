@@ -1,15 +1,17 @@
 {% extends "base.html" %}
-{% comment %}Главная страница: приветствие на GET / (шаг 1). Тексты как в демо.{% endcomment %}
+{% load i18n %}
+{% comment %}Главная (/): приветствие Хекслета, серверный рендер DjangoTemplates.{% endcomment %}
 
 {% block content %}
-<div class="card">
-    <div class="card-body p-5">
-        <h1 class="display-4">Привет от Хекслета!</h1>
-        <p class="lead">Практические курсы по программированию</p>
-        <hr>
-        <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io" target="_blank" rel="noopener">
-            Узнать больше
-        </a>
-    </div>
-</div>
+<section class="rounded-lg border border-gray-200 p-8 sm:p-12">
+    <h1 class="text-4xl font-bold tracking-tight">{% trans "Greetings from Hexlet!" %}</h1>
+    <p class="mt-3 text-xl text-gray-600">{% trans "Practical programming courses" %}</p>
+    <hr class="my-6 border-gray-200">
+    <a class="inline-block rounded-md bg-blue-600 px-5 py-2.5 text-white hover:bg-blue-700"
+       href="https://ru.hexlet.io"
+       target="_blank"
+       rel="noopener">
+        {% trans "Learn more" %}
+    </a>
+</section>
 {% endblock %}

@@ -1,8 +1,7 @@
-"""Настройки Django (шаг 1: деплой на Render + PostgreSQL).
+"""Настройки Django.
 
-Читает секреты из переменных окружения (.env / Render).
-Локально — SQLite, в продакшене — DATABASE_URL от PostgreSQL.
-ALLOWED_HOSTS всегда содержит webserver (требование проверки Хекслета).
+Секреты — из окружения. Локально SQLite, на Render — PostgreSQL.
+ALLOWED_HOSTS всегда содержит webserver. Интерфейс — Tailwind + i18n.
 """
 
 import os
@@ -51,14 +50,16 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
-    "django_bootstrap5",
+    "django_tailwind_cli",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -76,6 +77,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.template.context_processors.i18n",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
@@ -110,19 +112,27 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = "ru"
+LANGUAGES = [("ru", "Русский")]
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "assets"]
+
+# Исходный CSS вне STATICFILES_DIRS — иначе WhiteNoise ломает @import "tailwindcss".
+TAILWIND_CLI_SRC_CSS = "src/styles.css"
+TAILWIND_CLI_DIST_CSS = "css/tailwind.css"
+TAILWIND_CLI_VERSION = "4.1.16"
 
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 

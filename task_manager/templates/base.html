@@ -1,60 +1,43 @@
-{% load django_bootstrap5 %}
-{% comment %}Базовый каркас: навбар, flash-сообщения, подвал Hexlet.{% endcomment %}
+{% load i18n %}
+{% load tailwind_cli %}
+{% comment %}Базовый каркас: навбар, flash (role=alert), подвал. Стили — только Tailwind.{% endcomment %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Менеджер задач{% endblock %}</title>
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    <title>{% block title %}{% trans "Task manager" %}{% endblock %}</title>
+    {% tailwind_css %}
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'index' %}">Менеджер задач</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/">Пользователи</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/statuses/">Статусы</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/labels/">Метки</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/tasks/">Задачи</a>
-                        </li>
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout/">Выход</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login/">Вход</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/users/create/">Регистрация</a>
-                        </li>
-                    {% endif %}
-                </ul>
+<body class="flex min-h-screen flex-col bg-white text-gray-900">
+    <nav class="border-b border-gray-200 bg-gray-100">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+            <a class="font-bold text-gray-900 hover:text-blue-700" href="{% url 'index' %}">
+                {% trans "Task manager" %}
+            </a>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                <a class="text-gray-800 hover:text-blue-700" href="/users/">{% trans "Users" %}</a>
+                {% if user.is_authenticated %}
+                    <a class="text-gray-800 hover:text-blue-700" href="/statuses/">{% trans "Statuses" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="/labels/">{% trans "Labels" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="/tasks/">{% trans "Tasks" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="/logout/">{% trans "Log out" %}</a>
+                {% else %}
+                    <a class="text-gray-800 hover:text-blue-700" href="/login/">{% trans "Log in" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="/users/create/">{% trans "Sign up" %}</a>
+                {% endif %}
             </div>
         </div>
     </nav>
 
-    <main class="container py-4 flex-grow-1">
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                <div role="alert" class="mb-4 rounded-md border px-4 py-3
+                    {% if message.tags == 'success' %}border-green-300 bg-green-100 text-green-900
+                    {% elif message.tags == 'error' %}border-red-300 bg-red-100 text-red-900
+                    {% elif message.tags == 'warning' %}border-yellow-300 bg-yellow-100 text-yellow-900
+                    {% else %}border-blue-300 bg-blue-100 text-blue-900{% endif %}">
                     {{ message }}
                 </div>
             {% endfor %}
@@ -62,9 +45,9 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="container py-3 mt-auto">
-        <hr>
-        <div>Hexlet</div>
+    <footer class="mx-auto w-full max-w-6xl px-4 py-4">
+        <hr class="mb-3 border-gray-200">
+        <p>{% trans "Hexlet" %}</p>
     </footer>
 </body>
 </html>
