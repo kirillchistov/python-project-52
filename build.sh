@@ -5,6 +5,11 @@
 set -euo pipefail
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
-source "$HOME/.local/bin/env"
+# uv ставит бинарник в ~/.local/bin. Файл env есть не на всех системах
+# (на Render его нет) — добавляем каталог в PATH сами.
+export PATH="$HOME/.local/bin:$PATH"
+if [ -f "$HOME/.local/bin/env" ]; then
+  source "$HOME/.local/bin/env"
+fi
 
 make install && make collectstatic && make migrate
