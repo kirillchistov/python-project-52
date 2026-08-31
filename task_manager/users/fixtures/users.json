@@ -1,0 +1,32 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "username": "hexlet",
+      "first_name": "Hexlet",
+      "last_name": "User",
+      "email": "hexlet@example.com",
+      "password": "pbkdf2_sha256$1000000$D6xaiHQMIcLU6lYIM3zHM1$92DeFqOK24y7FdlkwpF64INFC3LDMlD0jORO/Qrsf1U=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-15T12:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "username": "another",
+      "first_name": "Another",
+      "last_name": "Person",
+      "email": "another@example.com",
+      "password": "pbkdf2_sha256$1000000$D6xaiHQMIcLU6lYIM3zHM1$92DeFqOK24y7FdlkwpF64INFC3LDMlD0jORO/Qrsf1U=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-16T12:00:00Z"
+    }
+  }
+]

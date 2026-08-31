@@ -50,3 +50,66 @@ msgstr "Узнать больше"
 
 msgid "Hexlet"
 msgstr "Hexlet"
+
+msgid "First name"
+msgstr "Имя"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"
+
+msgid "Full name"
+msgstr "Полное имя"
+
+msgid "Created at"
+msgstr "Дата создания"
+
+msgid "Register"
+msgstr "Зарегистрировать"
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+msgid "Edit user"
+msgstr "Изменение пользователя"
+
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+msgid "User successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+msgid "You are logged out"
+msgstr "Вы разлогинены"
+
+msgid "User successfully updated"
+msgstr "Пользователь успешно изменен"
+
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удален"
+
+msgid "You don't have permission to change"
+msgstr "У вас нет прав для изменения"

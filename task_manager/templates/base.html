@@ -16,15 +16,20 @@
                 {% trans "Task manager" %}
             </a>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-                <a class="text-gray-800 hover:text-blue-700" href="/users/">{% trans "Users" %}</a>
+                <a class="text-gray-800 hover:text-blue-700" href="{% url 'users' %}">{% trans "Users" %}</a>
                 {% if user.is_authenticated %}
                     <a class="text-gray-800 hover:text-blue-700" href="/statuses/">{% trans "Statuses" %}</a>
                     <a class="text-gray-800 hover:text-blue-700" href="/labels/">{% trans "Labels" %}</a>
                     <a class="text-gray-800 hover:text-blue-700" href="/tasks/">{% trans "Tasks" %}</a>
-                    <a class="text-gray-800 hover:text-blue-700" href="/logout/">{% trans "Log out" %}</a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="text-gray-800 hover:text-blue-700">
+                            {% trans "Log out" %}
+                        </button>
+                    </form>
                 {% else %}
-                    <a class="text-gray-800 hover:text-blue-700" href="/login/">{% trans "Log in" %}</a>
-                    <a class="text-gray-800 hover:text-blue-700" href="/users/create/">{% trans "Sign up" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="{% url 'login' %}">{% trans "Log in" %}</a>
+                    <a class="text-gray-800 hover:text-blue-700" href="{% url 'user_create' %}">{% trans "Sign up" %}</a>
                 {% endif %}
             </div>
         </div>

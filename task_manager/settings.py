@@ -5,6 +5,7 @@ ALLOWED_HOSTS всегда содержит webserver. Интерфейс — Ta
 """
 
 import os
+import sys
 from pathlib import Path
 
 import dj_database_url
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django_tailwind_cli",
+    "task_manager.users",
 ]
 
 MIDDLEWARE = [
@@ -98,18 +100,15 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "OPTIONS": {"min_length": 3},
     },
 ]
+
+AUTH_USER_MODEL = "users.User"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
 
 LANGUAGE_CODE = "ru"
 LANGUAGES = [("ru", "Русский")]
@@ -137,6 +136,11 @@ STORAGES = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+if "test" in sys.argv:
+    STORAGES["staticfiles"] = {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 

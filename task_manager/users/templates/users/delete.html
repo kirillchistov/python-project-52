@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}Подтверждение удаления своей учётной записи.{% endcomment %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-3xl font-bold">{{ title }}</h1>
+<p class="mb-4">{% trans "Are you sure you want to delete" %} {{ object }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+        {{ button_text }}
+    </button>
+</form>
+{% endblock %}

@@ -37,3 +37,6 @@ exclude = [
     "**/migrations/**",
     "**/settings.py",
 ]
+
+[tool.ruff.lint]
+ignore = ["RUF012"]

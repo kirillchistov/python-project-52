@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}Список пользователей: без авторизации, ссылки Изменить/Удалить.{% endcomment %}
+
+{% block title %}{% trans "Users" %}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-3xl font-bold">{% trans "Users" %}</h1>
+
+<table class="w-full text-left">
+    <thead class="border-b border-gray-200">
+        <tr>
+            <th class="py-2 pr-4">ID</th>
+            <th class="py-2 pr-4">{% trans "Username" %}</th>
+            <th class="py-2 pr-4">{% trans "Full name" %}</th>
+            <th class="py-2 pr-4">{% trans "Created at" %}</th>
+            <th class="py-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in users %}
+            <tr class="border-b border-gray-200">
+                <td class="py-2 pr-4">{{ item.pk }}</td>
+                <td class="py-2 pr-4">{{ item.username }}</td>
+                <td class="py-2 pr-4">{{ item }}</td>
+                <td class="py-2 pr-4">{{ item.date_joined|date:"d.m.Y H:i" }}</td>
+                <td class="py-2">
+                    <a class="text-blue-600 hover:underline" href="{% url 'user_update' item.pk %}">{% trans "Change" %}</a>
+                    <br>
+                    <a class="text-blue-600 hover:underline" href="{% url 'user_delete' item.pk %}">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
