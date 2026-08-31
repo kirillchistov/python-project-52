@@ -13,8 +13,11 @@ db.sqlite3
 
 staticfiles/
 media/
+.django_tailwind_cli/
+assets/css/
 
-.ruff_cache/
+# На Render файл .python-version иногда ломает запуск — не храним его в репозитории.
+.python-version
 .pytest_cache/
 .coverage
 htmlcov/

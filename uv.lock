@@ -19,6 +19,15 @@ wheels = [
 ]
 
 [[package]]
+name = "click"
+version = "8.5.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
+]
+
+[[package]]
 name = "dj-database-url"
 version = "3.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -45,15 +54,30 @@ wheels = [
 ]
 
 [[package]]
-name = "django-bootstrap5"
-version = "25.3"
+name = "django-click"
+version = "2.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "django" },
+    { name = "click" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/60/73/764367acc94f22b68f1ff8d39be511afa0315fd83299abdd6542bdeffdb4/django_bootstrap5-25.3.tar.gz", hash = "sha256:cc36f1a19d3200c0f5628c703320edb5c4e39e19bf17607fadf58ddb11828912", size = 49738, upload-time = "2025-11-14T13:00:13.316Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fc/e9/80f860c3f2bb9bdcc58de6b9578bbc6b4a57bedefdc97211e736fb960380/django_click-2.5.0.tar.gz", hash = "sha256:60d346a04d0db991d0bb31754c0dcad282643aa26a4701ca5ff5df742a7473f8", size = 7251, upload-time = "2026-01-10T13:19:37.958Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/56/0d/ae17205ff3f9e04deb364b037c506ff94166c23b0a7424208d39174c84f9/django_bootstrap5-25.3-py3-none-any.whl", hash = "sha256:3d381a5329a1439ac3237456c28cc8170c62b4c56ad3564d57876ffc3d4c5e78", size = 26772, upload-time = "2025-11-14T13:00:11.709Z" },
+    { url = "https://files.pythonhosted.org/packages/27/43/a8eedd594b0f1d5e736ad5afd48ff4431566d2760b79115af40d8b4e950a/django_click-2.5.0-py3-none-any.whl", hash = "sha256:6bcb71d0bac47f67b91d9ee1972d881d72b5bf20cd2a45a57265cdfac49b88aa", size = 7887, upload-time = "2026-01-10T13:19:37.13Z" },
+]
+
+[[package]]
+name = "django-tailwind-cli"
+version = "4.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "django" },
+    { name = "django-click" },
+    { name = "semver" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f1/14/5e161990f173ec8f4ec906d2f6055cb20376e5d4ee2b84cb18393b3b976f/django_tailwind_cli-4.8.0.tar.gz", hash = "sha256:d97b465272a67db96a86532a20658b72f3c31e64b7f788f77ec2ab059c3deb64", size = 165998, upload-time = "2026-08-30T11:12:41.467Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/fd/454bad110a4276e709dfeeff14b00af653d6eb426aba21444f480e954dda/django_tailwind_cli-4.8.0-py3-none-any.whl", hash = "sha256:04adb4cecd1c2165e517e05f756e055bf1004159f52f00808a459a2e7cf580fa", size = 54108, upload-time = "2026-08-30T11:12:40.029Z" },
 ]
 
 [[package]]
@@ -72,7 +96,7 @@ source = { editable = "." }
 dependencies = [
     { name = "dj-database-url" },
     { name = "django" },
-    { name = "django-bootstrap5" },
+    { name = "django-tailwind-cli" },
     { name = "gunicorn" },
     { name = "psycopg2-binary" },
     { name = "python-dotenv" },
@@ -88,7 +112,7 @@ dev = [
 requires-dist = [
     { name = "dj-database-url", specifier = ">=2.0" },
     { name = "django", specifier = ">=5.2,<6" },
-    { name = "django-bootstrap5", specifier = ">=25.1,<26" },
+    { name = "django-tailwind-cli", specifier = ">=4.8.0" },
     { name = "gunicorn", specifier = ">=23.0" },
     { name = "psycopg2-binary", specifier = ">=2.9" },
     { name = "python-dotenv", specifier = ">=1.0" },
@@ -193,6 +217,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ed/20/656d67f5b25ca9bda4e02b1de25867b2954e1d19e03648060f167ad0f4cc/ruff-0.16.5-py3-none-win32.whl", hash = "sha256:288b0a5f080492fe5635db849f9e2e84aa3cce7b7f0e955997d416c507c76a26", size = 10034250, upload-time = "2026-08-27T16:34:11.8Z" },
     { url = "https://files.pythonhosted.org/packages/5b/42/ee8e68a207b9127fcde6c3d7e197def432f346cb1af159e1fa14ca0d1cdc/ruff-0.16.5-py3-none-win_amd64.whl", hash = "sha256:ddc6385fb2137f616357ca03d6c74f4be987f80fed4008566b754f6032b8546f", size = 10516714, upload-time = "2026-08-27T16:34:13.963Z" },
     { url = "https://files.pythonhosted.org/packages/73/e3/7df5a396e445b9ba49ce9a9437439a4d80042c61c0ade199abf8d16de1ac/ruff-0.16.5-py3-none-win_arm64.whl", hash = "sha256:a64abe90968719b851bb7cedffaa8753fbdbdadab483089682db623f3edc587e", size = 10391564, upload-time = "2026-08-27T16:34:16.064Z" },
+]
+
+[[package]]
+name = "semver"
+version = "3.0.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/72/d1/d3159231aec234a59dd7d601e9dd9fe96f3afff15efd33c1070019b26132/semver-3.0.4.tar.gz", hash = "sha256:afc7d8c584a5ed0a11033af086e8af226a9c0b206f313e0301f8dd7b6b589602", size = 269730, upload-time = "2025-01-24T13:19:27.617Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/24/4d91e05817e92e3a61c8a21e08fd0f390f5301f1c448b137c57c4bc6e543/semver-3.0.4-py3-none-any.whl", hash = "sha256:9c824d87ba7f7ab4a1890799cec8596f15c1241cb473404ea1cb0c55e4b04746", size = 17912, upload-time = "2025-01-24T13:19:24.949Z" },
 ]
 
 [[package]]

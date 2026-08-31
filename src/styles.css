@@ -1,0 +1,4 @@
+/* Исходный CSS: утилиты Tailwind и плагин форм. Не класть в STATICFILES_DIRS.
+   Сборка: python manage.py tailwind build → assets/css/tailwind.css */
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";

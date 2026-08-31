@@ -15,7 +15,7 @@ dependencies = [
     "psycopg2-binary>=2.9",
     "gunicorn>=23.0",
     "whitenoise>=6.9",
-    "django-bootstrap5>=25.1,<26",
+    "django-tailwind-cli>=4.8.0",
 ]
 
 [dependency-groups]

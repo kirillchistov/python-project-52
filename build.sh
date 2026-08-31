@@ -12,4 +12,4 @@ if [ -f "$HOME/.local/bin/env" ]; then
   source "$HOME/.local/bin/env"
 fi
 
-make install && make collectstatic && make migrate
+make install && make tailwind && make collectstatic && make migrate

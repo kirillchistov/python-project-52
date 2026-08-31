@@ -1,0 +1,2 @@
+# Каталог для собранного Tailwind CSS (css/tailwind.css появляется после make tailwind).
+# Сам css — артефакт сборки, в git не кладём.
