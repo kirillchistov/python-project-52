@@ -1,0 +1,24 @@
+# Исключения из git: окружение, секреты, кэш и артефакты сборки.
+
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+.env
+*.sqlite3
+db.sqlite3
+
+staticfiles/
+media/
+
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# На Render файл .python-version иногда ломает запуск — не храним его в репозитории.
+.python-version
