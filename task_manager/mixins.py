@@ -1,7 +1,8 @@
-"""Общие mixin'ы доступа: логин и «только владелец записи»."""
+"""Общие mixin'ы доступа: логин, владелец записи, защита удаления."""
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -27,3 +28,16 @@ class SelfOnlyMixin(AuthRequiredMixin, UserPassesTestMixin):
             return super().handle_no_permission()
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_denied_url)
+
+
+class DeleteProtectionMixin:
+    """Не удаляем объект, если на него ссылаются связанные записи (PROTECT)."""
+
+    protected_message = _("Cannot delete status")
+
+    def form_valid(self, form):
+        try:
+            return super().form_valid(form)
+        except ProtectedError:
+            messages.error(self.request, self.protected_message)
+            return redirect(self.get_success_url())
