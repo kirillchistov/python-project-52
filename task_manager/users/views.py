@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.mixins import SelfOnlyMixin
+from task_manager.mixins import DeleteProtectionMixin, SelfOnlyMixin
 from task_manager.users.forms import LoginForm, UserForm
 from task_manager.users.models import User
 
@@ -48,13 +48,14 @@ class UserUpdateView(SelfOnlyMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class UserDeleteView(SelfOnlyMixin, SuccessMessageMixin, DeleteView):
-    """Удалять можно только себя; после успеха — список пользователей."""
+class UserDeleteView(SelfOnlyMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
+    """Удалять можно только себя и только если нет связанных задач."""
 
     model = User
     template_name = "users/delete.html"
     success_url = reverse_lazy("users")
     success_message = _("User successfully deleted")
+    protected_message = _("Cannot delete user")
     extra_context = {
         "title": _("Delete user"),
         "button_text": _("Yes, delete"),

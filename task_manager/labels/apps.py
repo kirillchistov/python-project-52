@@ -1,0 +1,9 @@
+"""Приложение меток: пока только модель, чтобы задачи могли хранить M2M."""
+
+from django.apps import AppConfig
+
+
+class LabelsConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "task_manager.labels"
+    label = "labels"

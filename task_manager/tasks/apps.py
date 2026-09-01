@@ -1,0 +1,9 @@
+"""Приложение задач: имя, описание, статус, автор, исполнитель, метки."""
+
+from django.apps import AppConfig
+
+
+class TasksConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "task_manager.tasks"
+    label = "tasks"

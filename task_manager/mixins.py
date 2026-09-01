@@ -33,7 +33,7 @@ class SelfOnlyMixin(AuthRequiredMixin, UserPassesTestMixin):
 class DeleteProtectionMixin:
     """Не удаляем объект, если на него ссылаются связанные записи (PROTECT)."""
 
-    protected_message = _("Cannot delete status")
+    protected_message = _("Cannot delete the item")
 
     def form_valid(self, form):
         try:
@@ -41,3 +41,19 @@ class DeleteProtectionMixin:
         except ProtectedError:
             messages.error(self.request, self.protected_message)
             return redirect(self.get_success_url())
+
+
+class AuthorOnlyMixin(AuthRequiredMixin, UserPassesTestMixin):
+    """Удалять задачу может только её автор."""
+
+    permission_denied_url = reverse_lazy("tasks")
+    permission_denied_message = _("A task can be deleted only by its author")
+
+    def test_func(self):
+        return self.get_object().author_id == self.request.user.id
+
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            return super().handle_no_permission()
+        messages.error(self.request, self.permission_denied_message)
+        return redirect(self.permission_denied_url)

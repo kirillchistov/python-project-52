@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}Просмотр задачи: описание, автор, исполнитель, статус, дата, метки.{% endcomment %}
+
+{% block title %}{% trans "View task" %}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-3xl font-bold">{% trans "View task" %}</h1>
+
+<article class="overflow-hidden rounded-md border border-gray-200">
+    <header class="bg-slate-700 px-4 py-3 text-lg font-semibold text-white">
+        {{ task.name }}
+    </header>
+    <div class="space-y-4 p-4">
+        {% if task.description %}
+            <p>{{ task.description }}</p>
+        {% endif %}
+        <hr class="border-gray-200">
+        <dl class="space-y-2">
+            <div><span class="font-medium">{% trans "Author" %}:</span> {{ task.author }}</div>
+            <div><span class="font-medium">{% trans "Executor" %}:</span> {{ task.executor|default_if_none:"" }}</div>
+            <div><span class="font-medium">{% trans "Status" %}:</span> {{ task.status }}</div>
+            <div><span class="font-medium">{% trans "Created at" %}:</span> {{ task.created_at|date:"d.m.Y H:i" }}</div>
+        </dl>
+        <div>
+            <h2 class="mb-2 font-medium">{% trans "Labels" %}:</h2>
+            <ul class="list-disc pl-6">
+                {% for label in task.labels.all %}
+                    <li>{{ label }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="flex gap-4">
+            <a class="text-blue-600 hover:underline" href="{% url 'task_update' task.pk %}">{% trans "Change" %}</a>
+            <a class="text-blue-600 hover:underline" href="{% url 'task_delete' task.pk %}">{% trans "Delete" %}</a>
+        </div>
+    </div>
+</article>
+{% endblock %}

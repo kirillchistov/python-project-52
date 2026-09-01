@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}Список задач: имя-ссылка, статус, автор, исполнитель, дата, Показать/Изменить/Удалить.{% endcomment %}
+
+{% block title %}{% trans "Tasks" %}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-3xl font-bold">{% trans "Tasks" %}</h1>
+<a class="mb-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+   href="{% url 'task_create' %}">
+    {% trans "Create task" %}
+</a>
+
+<table class="mt-4 w-full text-left">
+    <thead class="border-b border-gray-200">
+        <tr>
+            <th class="py-2 pr-4">ID</th>
+            <th class="py-2 pr-4">{% trans "Name" %}</th>
+            <th class="py-2 pr-4">{% trans "Status" %}</th>
+            <th class="py-2 pr-4">{% trans "Author" %}</th>
+            <th class="py-2 pr-4">{% trans "Executor" %}</th>
+            <th class="py-2 pr-4">{% trans "Created at" %}</th>
+            <th class="py-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in tasks %}
+            <tr class="border-b border-gray-200">
+                <td class="py-2 pr-4">{{ item.pk }}</td>
+                <td class="py-2 pr-4">
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_detail' item.pk %}">{{ item.name }}</a>
+                </td>
+                <td class="py-2 pr-4">{{ item.status }}</td>
+                <td class="py-2 pr-4">{{ item.author }}</td>
+                <td class="py-2 pr-4">{{ item.executor|default_if_none:"" }}</td>
+                <td class="py-2 pr-4">{{ item.created_at|date:"d.m.Y H:i" }}</td>
+                <td class="py-2">
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_detail' item.pk %}">{% trans "Show" %}</a>
+                    <br>
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_update' item.pk %}">{% trans "Change" %}</a>
+                    <br>
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_delete' item.pk %}">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
