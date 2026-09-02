@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Компас -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#6C5CE7" stroke-width="3" />
+  <circle cx="50" cy="50" r="28" fill="none" stroke="#6C5CE7" stroke-width="1.5" stroke-dasharray="4 4" />
+  
+  <!-- Стрелка на север (цель) -->
+  <polygon points="50,10 56,30 50,26 44,30" fill="#6C5CE7" />
+  <polygon points="50,90 56,70 50,74 44,70" fill="#A29BFE" opacity="0.5" />
+  
+  <!-- Дорожная карта (маршрут) -->
+  <polyline points="20,60 40,50 60,65 80,40" fill="none" stroke="#FD79A8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Точки вех (milestones) -->
+  <circle cx="40" cy="50" r="6" fill="#FD79A8" />
+  <circle cx="60" cy="65" r="6" fill="#FD79A8" />
+  <circle cx="80" cy="40" r="6" fill="#FD79A8" />
+  
+  <!-- Текущая позиция -->
+  <circle cx="20" cy="60" r="5" fill="#6C5CE7" />
+  <circle cx="20" cy="60" r="2" fill="#FFFFFF" />
+</svg>

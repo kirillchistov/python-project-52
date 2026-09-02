@@ -5,34 +5,35 @@
 {% block title %}{% trans "Statuses" %}{% endblock %}
 
 {% block content %}
-<h1 class="mb-4 text-3xl font-bold">{% trans "Statuses" %}</h1>
-<a class="mb-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-   href="{% url 'status_create' %}">
+<h1 class="page-title">{% trans "Statuses" %}</h1>
+<a class="btn-primary mb-6" href="{% url 'status_create' %}">
     {% trans "Create status" %}
 </a>
 
-<table class="mt-4 w-full text-left">
-    <thead class="border-b border-gray-200">
+<div class="surface mt-6 overflow-x-auto">
+<table class="data-table">
+    <thead>
         <tr>
-            <th class="py-2 pr-4">ID</th>
-            <th class="py-2 pr-4">{% trans "Name" %}</th>
-            <th class="py-2 pr-4">{% trans "Created at" %}</th>
-            <th class="py-2"></th>
+            <th>ID</th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Created at" %}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         {% for item in statuses %}
-            <tr class="border-b border-gray-200">
-                <td class="py-2 pr-4">{{ item.pk }}</td>
-                <td class="py-2 pr-4">{{ item.name }}</td>
-                <td class="py-2 pr-4">{{ item.created_at|date:"d.m.Y H:i" }}</td>
-                <td class="py-2">
-                    <a class="text-blue-600 hover:underline" href="{% url 'status_update' item.pk %}">{% trans "Change" %}</a>
+            <tr>
+                <td>{{ item.pk }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a class="link-accent" href="{% url 'status_update' item.pk %}">{% trans "Change" %}</a>
                     <br>
-                    <a class="text-blue-600 hover:underline" href="{% url 'status_delete' item.pk %}">{% trans "Delete" %}</a>
+                    <a class="link-accent" href="{% url 'status_delete' item.pk %}">{% trans "Delete" %}</a>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock %}

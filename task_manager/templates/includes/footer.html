@@ -1,0 +1,10 @@
+{% load i18n %}
+<footer class="border-t border-ink/10 bg-white/70 px-4 py-8 dark:border-white/10 dark:bg-night-card/60">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-2">
+            {% include "includes/logo.html" with size="sm" %}
+            <span class="text-sm font-semibold">{% trans "Task manager" %}</span>
+        </div>
+        <p class="text-sm text-ink-muted dark:text-sand/60">{% trans "Hexlet" %}</p>
+    </div>
+</footer>

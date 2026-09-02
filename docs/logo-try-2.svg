@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Воронка/конвейер -->
+  <polygon points="10,15 90,15 70,85 30,85" fill="none" stroke="#00C9A7" stroke-width="3" stroke-linejoin="round" />
+  
+  <!-- Хаос входящих частиц -->
+  <circle cx="30" cy="25" r="5" fill="#FF6B6B" opacity="0.8" />
+  <circle cx="55" cy="20" r="4" fill="#4ECDC4" opacity="0.8" />
+  <circle cx="70" cy="30" r="6" fill="#FFE66D" opacity="0.8" />
+  <circle cx="45" cy="35" r="4" fill="#FF6B6B" opacity="0.8" />
+  
+  <!-- Поток (движение вниз) -->
+  <line x1="35" y1="50" x2="45" y2="65" stroke="#00C9A7" stroke-width="2" stroke-dasharray="3 3" />
+  <line x1="65" y1="50" x2="55" y2="65" stroke="#00C9A7" stroke-width="2" stroke-dasharray="3 3" />
+  <line x1="50" y1="45" x2="50" y2="65" stroke="#00C9A7" stroke-width="3" />
+  
+  <!-- Упорядоченный вывод (кристаллическая решетка) -->
+  <rect x="35" y="70" width="8" height="8" fill="#00C9A7" rx="2" />
+  <rect x="46" y="70" width="8" height="8" fill="#00C9A7" rx="2" />
+  <rect x="57" y="70" width="8" height="8" fill="#00C9A7" rx="2" />
+  <rect x="40" y="82" width="8" height="8" fill="#00B897" rx="2" />
+  <rect x="52" y="82" width="8" height="8" fill="#00B897" rx="2" />
+</svg>

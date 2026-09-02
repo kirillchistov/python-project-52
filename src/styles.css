@@ -1,4 +1,81 @@
-/* Исходный CSS: утилиты Tailwind и плагин форм. Не класть в STATICFILES_DIRS.
+/* Исходный CSS: утилиты Tailwind, тема Hearts (Plaky-like), плагин форм.
    Сборка: python manage.py tailwind build → assets/css/tailwind.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-coral: #ff665a;
+  --color-coral-dark: #e24e43;
+  --color-ink: #18212f;
+  --color-ink-muted: #4b5870;
+  --color-sand: #fff9f3;
+  --color-sand-2: #f3e8dc;
+  --color-night: #0f141c;
+  --color-night-card: #1c2430;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-coral px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-coral-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-coral hover:text-coral dark:border-white/15 dark:bg-night-card dark:text-sand dark:hover:border-coral dark:hover:text-coral;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-ink/5 hover:text-ink dark:text-sand/80 dark:hover:bg-white/10 dark:hover:text-sand;
+  }
+
+  .link-accent {
+    @apply font-medium text-coral transition hover:text-coral-dark hover:underline;
+  }
+
+  .page-title {
+    @apply mb-6 text-3xl font-extrabold tracking-tight text-ink dark:text-sand;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-ink/10 bg-white shadow-sm dark:border-white/10 dark:bg-night-card;
+  }
+
+  .data-table {
+    @apply w-full text-left text-sm;
+  }
+
+  .data-table thead {
+    @apply border-b border-ink/10 text-ink-muted dark:border-white/10 dark:text-sand/60;
+  }
+
+  .data-table th {
+    @apply px-4 py-3 font-semibold;
+  }
+
+  .data-table td {
+    @apply px-4 py-3;
+  }
+
+  .data-table tbody tr {
+    @apply border-b border-ink/10 dark:border-white/10;
+  }
+
+  input:not([type="checkbox"]):not([type="hidden"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  select,
+  textarea {
+    @apply rounded-xl border-ink/15 bg-white text-ink focus:border-coral focus:ring-coral dark:border-white/15 dark:bg-night dark:text-sand dark:focus:border-coral dark:focus:ring-coral;
+  }
+
+  input[type="checkbox"] {
+    @apply rounded border-ink/30 text-coral focus:ring-coral dark:border-white/30 dark:bg-night;
+  }
+}

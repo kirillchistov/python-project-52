@@ -209,3 +209,136 @@ msgstr "Метка"
 
 msgid "Only own tasks"
 msgstr "Только свои задачи"
+
+msgid "Toggle theme"
+msgstr "Переключить тему"
+
+msgid "Hearts workspace"
+msgstr "Hearts"
+
+msgid "Your best work platform"
+msgstr "Ваша лучшая рабочая платформа"
+
+msgid "Landing hero subtitle"
+msgstr "Управляйте задачами, статусами и метками в одном спокойном пространстве — без лишних вкладок и хаоса в чатах."
+
+msgid "Go to tasks"
+msgstr "К задачам"
+
+msgid "Get started free"
+msgstr "Начать бесплатно"
+
+msgid "Sprint board"
+msgstr "Доска спринта"
+
+msgid "Live view"
+msgstr "Сейчас"
+
+msgid "New"
+msgstr "Новые"
+
+msgid "In progress"
+msgstr "В работе"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Mock card briefing"
+msgstr "Собрать бриф"
+
+msgid "Mock card research"
+msgstr "Исследовать спрос"
+
+msgid "Mock card design"
+msgstr "Сверстать экран"
+
+msgid "Mock card launch"
+msgstr "Запустить релиз"
+
+msgid "Stat workspace"
+msgstr "Одно рабочее пространство на всю команду"
+
+msgid "Stat tasks"
+msgstr "Задачи, люди и сроки — без потолка"
+
+msgid "Stat clarity"
+msgstr "Прозрачность вместо бесконечных созвонов"
+
+msgid "Work at your fingertips"
+msgstr "Проект на кончиках пальцев"
+
+msgid "Features intro"
+msgstr "Полный контроль над работой: задачи, поля, фильтры и команда — в одном месте."
+
+msgid "Feature tasks title"
+msgstr "Управление задачами"
+
+msgid "Feature tasks text"
+msgstr "Раскладывайте нагрузку на понятные действия, назначайте исполнителя и двигайте статус."
+
+msgid "Feature fields title"
+msgstr "Поля и метки"
+
+msgid "Feature fields text"
+msgstr "Структурируйте работу метками — как на GitHub, только спокойнее."
+
+msgid "Feature filter title"
+msgstr "Фильтры и обзор"
+
+msgid "Feature filter text"
+msgstr "Отсекайте шум: статус, исполнитель, метка или только свои задачи."
+
+msgid "Feature team title"
+msgstr "Командная работа"
+
+msgid "Feature team text"
+msgstr "Автор, исполнитель и история рядом с задачей — меньше «а кто это делает?»."
+
+msgid "Replace the chaos"
+msgstr "Одна система вместо разрозненных инструментов"
+
+msgid "Replace chaos text"
+msgstr "Сохраняйте время и контекст: люди, задачи и решения живут вместе, а не в десяти вкладках."
+
+msgid "Replace point one"
+msgstr "Меньше переключений — больше сделанной работы"
+
+msgid "Replace point two"
+msgstr "Общий контекст для команды, а не для чата"
+
+msgid "Replace point three"
+msgstr "Приоритеты видны сразу, без ручной сборки отчётов"
+
+msgid "One click control"
+msgstr "Контроль в один клик"
+
+msgid "One click text"
+msgstr "Смотрите статусы, дедлайны и комментарии там, где уже идёт работа."
+
+msgid "Loved by focused teams"
+msgstr "Команды, которым важна ясность"
+
+msgid "Quote one"
+msgstr "Вместо созвона на полчаса — короткая задача, тег человека и всё видно в одном месте."
+
+msgid "Quote one author"
+msgstr "Команды, которым нужен ритм"
+
+msgid "Quote two"
+msgstr "Когда проектов становится больше, держать планы в голове уже нельзя. Здесь они лежат рядом со статусами и метками."
+
+msgid "Quote two author"
+msgstr "Растущие команды"
+
+msgid "Quote three"
+msgstr "Приоритет, исполнитель и комментарий на одной карточке — меньше случайных вопросов."
+
+msgid "Quote three author"
+msgstr "Продуктовые команды"
+
+msgid "Start today"
+msgstr "Начните проект сегодня"
+
+msgid "Start today text"
+msgstr "Регистрация занимает минуту. Дальше — задачи, фильтры и спокойный контроль работы."
+
