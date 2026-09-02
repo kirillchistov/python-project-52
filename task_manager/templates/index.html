@@ -1,20 +1,33 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% comment %}Лендинг (/): 7 экранов. Фразы Хекслета остаются на странице для тестов курса.{% endcomment %}
+{% comment %}Лендинг (/): блок Хекслета для тестов курса, затем экраны Hearts.{% endcomment %}
 
 {% block title %}{% trans "Task manager" %}{% endblock %}
 
 {% block shell %}
-{% include "includes/messages.html" %}
 <main>
+    {% include "includes/messages.html" %}
+
+    <div class="mx-auto w-full max-w-6xl px-4 py-8">
+        <section class="rounded-lg border border-gray-200 p-8 sm:p-12">
+            <h1 class="text-4xl font-bold tracking-tight">{% trans "Greetings from Hexlet!" %}</h1>
+            <p class="mt-3 text-xl text-gray-600">{% trans "Practical programming courses" %}</p>
+            <hr class="my-6 border-gray-200">
+            <a class="inline-block rounded-md bg-blue-600 px-5 py-2.5 text-white hover:bg-blue-700"
+               href="https://ru.hexlet.io"
+               target="_blank"
+               rel="noopener">
+                {% trans "Learn more" %}
+            </a>
+        </section>
+    </div>
+
     <section class="relative overflow-hidden px-4 py-16 sm:py-24">
         <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,102,90,0.18),_transparent_40%)] dark:bg-[radial-gradient(circle_at_top_right,_rgba(255,102,90,0.12),_transparent_45%)]"></div>
         <div class="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
             <div>
                 <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-coral">{% trans "Hearts workspace" %}</p>
-                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">{% trans "Greetings from Hexlet!" %}</h1>
-                <p class="mt-3 text-xl text-ink-muted dark:text-sand/70">{% trans "Practical programming courses" %}</p>
-                <h2 class="mt-8 text-3xl font-extrabold tracking-tight sm:text-4xl">{% trans "Your best work platform" %}</h2>
+                <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{% trans "Your best work platform" %}</h2>
                 <p class="mt-4 max-w-xl text-lg text-ink-muted dark:text-sand/70">
                     {% trans "Landing hero subtitle" %}
                 </p>
@@ -23,11 +36,7 @@
                         <a class="btn-primary px-5 py-3" href="{% url 'tasks' %}">{% trans "Go to tasks" %}</a>
                     {% else %}
                         <a class="btn-primary px-5 py-3" href="{% url 'user_create' %}">{% trans "Get started free" %}</a>
-                        <a class="btn-secondary px-5 py-3" href="{% url 'login' %}">{% trans "Log in" %}</a>
                     {% endif %}
-                    <a class="btn-secondary px-5 py-3" href="https://ru.hexlet.io" target="_blank" rel="noopener">
-                        {% trans "Learn more" %}
-                    </a>
                 </div>
             </div>
             <div class="surface p-4 sm:p-6">
@@ -37,16 +46,16 @@
                 </div>
                 <div class="grid gap-3 sm:grid-cols-3">
                     <div class="rounded-xl bg-sand-2 p-3 dark:bg-night">
-                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "New" %}</p>
+                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "Mock column new" %}</p>
                         <div class="mb-2 rounded-lg bg-white p-3 text-sm shadow-sm dark:bg-night-card">{% trans "Mock card briefing" %}</div>
                         <div class="rounded-lg bg-white p-3 text-sm shadow-sm dark:bg-night-card">{% trans "Mock card research" %}</div>
                     </div>
                     <div class="rounded-xl bg-sand-2 p-3 dark:bg-night">
-                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "In progress" %}</p>
+                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "Mock column progress" %}</p>
                         <div class="rounded-lg border-l-4 border-coral bg-white p-3 text-sm shadow-sm dark:bg-night-card">{% trans "Mock card design" %}</div>
                     </div>
                     <div class="rounded-xl bg-sand-2 p-3 dark:bg-night">
-                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "Done" %}</p>
+                        <p class="mb-2 text-xs font-semibold uppercase text-ink-muted dark:text-sand/50">{% trans "Mock column done" %}</p>
                         <div class="rounded-lg bg-white p-3 text-sm shadow-sm dark:bg-night-card">{% trans "Mock card launch" %}</div>
                     </div>
                 </div>
@@ -140,13 +149,10 @@
             <p class="mx-auto mt-4 max-w-2xl text-white/90">{% trans "Start today text" %}</p>
             <div class="mt-8 flex flex-wrap justify-center gap-3">
                 {% if user.is_authenticated %}
-                    <a class="inline-flex rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-night" href="{% url 'tasks' %}">{% trans "Go to tasks" %}</a>
+                    <a class="inline-flex rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-night" href="{% url 'tasks' %}">{% trans "Open the board" %}</a>
                 {% else %}
-                    <a class="inline-flex rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-night" href="{% url 'user_create' %}">{% trans "Get started free" %}</a>
+                    <a class="inline-flex rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-night" href="{% url 'user_create' %}">{% trans "Launch workspace" %}</a>
                 {% endif %}
-                <a class="inline-flex rounded-xl bg-white px-5 py-3 text-sm font-semibold text-ink hover:bg-sand" href="https://ru.hexlet.io" target="_blank" rel="noopener">
-                    {% trans "Learn more" %}
-                </a>
             </div>
         </div>
     </section>

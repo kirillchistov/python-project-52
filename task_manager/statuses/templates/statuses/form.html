@@ -5,10 +5,10 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1 class="page-title">{{ title }}</h1>
-<form method="post" class="surface max-w-xl p-6">
+<h1 class="mb-4 text-3xl font-bold">{{ title }}</h1>
+<form method="post">
     {% include "includes/form_fields.html" %}
-    <button type="submit" class="btn-primary">
+    <button type="submit" class="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
         {{ button_text }}
     </button>
 </form>

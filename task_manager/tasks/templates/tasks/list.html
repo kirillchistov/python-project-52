@@ -5,27 +5,28 @@
 {% block title %}{% trans "Tasks" %}{% endblock %}
 
 {% block content %}
-<h1 class="page-title">{% trans "Tasks" %}</h1>
-<a class="btn-primary mb-6" href="{% url 'task_create' %}">
+<h1 class="mb-4 text-3xl font-bold">{% trans "Tasks" %}</h1>
+<a class="mb-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+   href="{% url 'task_create' %}">
     {% trans "Create task" %}
 </a>
 
-<form method="get" action="{% url 'tasks' %}" class="surface mb-6 p-5">
+<form method="get" action="{% url 'tasks' %}" class="mb-6 rounded-md border border-gray-200 p-4">
     <div class="grid gap-4 md:grid-cols-3">
         <div>
-            <label for="{{ filter.form.status.id_for_label }}" class="block text-sm font-semibold">
+            <label for="{{ filter.form.status.id_for_label }}" class="block font-medium">
                 {{ filter.form.status.label }}
             </label>
             {{ filter.form.status }}
         </div>
         <div>
-            <label for="{{ filter.form.executor.id_for_label }}" class="block text-sm font-semibold">
+            <label for="{{ filter.form.executor.id_for_label }}" class="block font-medium">
                 {{ filter.form.executor.label }}
             </label>
             {{ filter.form.executor }}
         </div>
         <div>
-            <label for="{{ filter.form.labels.id_for_label }}" class="block text-sm font-semibold">
+            <label for="{{ filter.form.labels.id_for_label }}" class="block font-medium">
                 {{ filter.form.labels.label }}
             </label>
             {{ filter.form.labels }}
@@ -33,49 +34,47 @@
     </div>
     <div class="mt-4 flex items-center gap-2">
         {{ filter.form.self_tasks }}
-        <label for="{{ filter.form.self_tasks.id_for_label }}" class="text-sm">
+        <label for="{{ filter.form.self_tasks.id_for_label }}">
             {{ filter.form.self_tasks.label }}
         </label>
     </div>
-    <button type="submit" class="btn-primary mt-4">
+    <button type="submit" class="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
         {% trans "Show" %}
     </button>
 </form>
 
-<div class="surface overflow-x-auto">
-<table class="data-table">
-    <thead>
+<table class="mt-4 w-full text-left">
+    <thead class="border-b border-gray-200">
         <tr>
-            <th>ID</th>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Status" %}</th>
-            <th>{% trans "Author" %}</th>
-            <th>{% trans "Executor" %}</th>
-            <th>{% trans "Created at" %}</th>
-            <th></th>
+            <th class="py-2 pr-4">ID</th>
+            <th class="py-2 pr-4">{% trans "Name" %}</th>
+            <th class="py-2 pr-4">{% trans "Status" %}</th>
+            <th class="py-2 pr-4">{% trans "Author" %}</th>
+            <th class="py-2 pr-4">{% trans "Executor" %}</th>
+            <th class="py-2 pr-4">{% trans "Created at" %}</th>
+            <th class="py-2"></th>
         </tr>
     </thead>
     <tbody>
         {% for item in tasks %}
-            <tr>
-                <td>{{ item.pk }}</td>
-                <td>
-                    <a class="link-accent" href="{% url 'task_detail' item.pk %}">{{ item.name }}</a>
+            <tr class="border-b border-gray-200">
+                <td class="py-2 pr-4">{{ item.pk }}</td>
+                <td class="py-2 pr-4">
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_detail' item.pk %}">{{ item.name }}</a>
                 </td>
-                <td>{{ item.status }}</td>
-                <td>{{ item.author }}</td>
-                <td>{{ item.executor|default_if_none:"" }}</td>
-                <td>{{ item.created_at|date:"d.m.Y H:i" }}</td>
-                <td>
-                    <a class="link-accent" href="{% url 'task_detail' item.pk %}">{% trans "Show" %}</a>
+                <td class="py-2 pr-4">{{ item.status }}</td>
+                <td class="py-2 pr-4">{{ item.author }}</td>
+                <td class="py-2 pr-4">{{ item.executor|default_if_none:"" }}</td>
+                <td class="py-2 pr-4">{{ item.created_at|date:"d.m.Y H:i" }}</td>
+                <td class="py-2">
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_detail' item.pk %}">{% trans "Show" %}</a>
                     <br>
-                    <a class="link-accent" href="{% url 'task_update' item.pk %}">{% trans "Change" %}</a>
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_update' item.pk %}">{% trans "Change" %}</a>
                     <br>
-                    <a class="link-accent" href="{% url 'task_delete' item.pk %}">{% trans "Delete" %}</a>
+                    <a class="text-blue-600 hover:underline" href="{% url 'task_delete' item.pk %}">{% trans "Delete" %}</a>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-</div>
 {% endblock %}

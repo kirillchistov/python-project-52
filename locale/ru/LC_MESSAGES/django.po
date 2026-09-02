@@ -220,7 +220,7 @@ msgid "Your best work platform"
 msgstr "Ваша лучшая рабочая платформа"
 
 msgid "Landing hero subtitle"
-msgstr "Управляйте задачами, статусами и метками в одном спокойном пространстве — без лишних вкладок и хаоса в чатах."
+msgstr "Статусы, метки и фильтры — в одном спокойном пространстве, без лишних вкладок и хаоса в чатах."
 
 msgid "Go to tasks"
 msgstr "К задачам"
@@ -228,19 +228,25 @@ msgstr "К задачам"
 msgid "Get started free"
 msgstr "Начать бесплатно"
 
+msgid "Open the board"
+msgstr "Открыть доску"
+
+msgid "Launch workspace"
+msgstr "Запустить пространство"
+
 msgid "Sprint board"
 msgstr "Доска спринта"
 
 msgid "Live view"
 msgstr "Сейчас"
 
-msgid "New"
-msgstr "Новые"
+msgid "Mock column new"
+msgstr "К запуску"
 
-msgid "In progress"
+msgid "Mock column progress"
 msgstr "В работе"
 
-msgid "Done"
+msgid "Mock column done"
 msgstr "Готово"
 
 msgid "Mock card briefing"
@@ -259,7 +265,7 @@ msgid "Stat workspace"
 msgstr "Одно рабочее пространство на всю команду"
 
 msgid "Stat tasks"
-msgstr "Задачи, люди и сроки — без потолка"
+msgstr "Люди и сроки — без искусственного потолка"
 
 msgid "Stat clarity"
 msgstr "Прозрачность вместо бесконечных созвонов"
@@ -268,10 +274,10 @@ msgid "Work at your fingertips"
 msgstr "Проект на кончиках пальцев"
 
 msgid "Features intro"
-msgstr "Полный контроль над работой: задачи, поля, фильтры и команда — в одном месте."
+msgstr "Полный контроль над работой: статусы, поля, фильтры и команда — в одном месте."
 
 msgid "Feature tasks title"
-msgstr "Управление задачами"
+msgstr "Карточки работы"
 
 msgid "Feature tasks text"
 msgstr "Раскладывайте нагрузку на понятные действия, назначайте исполнителя и двигайте статус."
@@ -286,7 +292,7 @@ msgid "Feature filter title"
 msgstr "Фильтры и обзор"
 
 msgid "Feature filter text"
-msgstr "Отсекайте шум: статус, исполнитель, метка или только свои задачи."
+msgstr "Отсекайте шум: статус, исполнитель, метка или только свои карточки."
 
 msgid "Feature team title"
 msgstr "Командная работа"
@@ -298,7 +304,7 @@ msgid "Replace the chaos"
 msgstr "Одна система вместо разрозненных инструментов"
 
 msgid "Replace chaos text"
-msgstr "Сохраняйте время и контекст: люди, задачи и решения живут вместе, а не в десяти вкладках."
+msgstr "Сохраняйте время и контекст: люди, карточки и решения живут вместе, а не в десяти вкладках."
 
 msgid "Replace point one"
 msgstr "Меньше переключений — больше сделанной работы"
@@ -340,5 +346,5 @@ msgid "Start today"
 msgstr "Начните проект сегодня"
 
 msgid "Start today text"
-msgstr "Регистрация занимает минуту. Дальше — задачи, фильтры и спокойный контроль работы."
+msgstr "Создать аккаунт можно за минуту. Дальше — доска, фильтры и спокойный контроль работы."
 

@@ -5,23 +5,33 @@
 {% block title %}{% trans "View task" %}{% endblock %}
 
 {% block content %}
-<h1 class="page-title">{% trans "View task" %}</h1>
+<h1 class="mb-4 text-3xl font-bold">{% trans "View task" %}</h1>
 
-<article class="surface overflow-hidden">
-    <header class="bg-ink px-5 py-4 text-lg font-semibold text-sand">
+<div class="overflow-hidden rounded-lg border border-gray-200">
+    <div class="bg-gray-800 px-4 py-3 text-lg font-semibold text-white">
         {{ task.name }}
-    </header>
-    <div class="space-y-4 p-5">
+    </div>
+    <div class="space-y-4 p-4">
         {% if task.description %}
             <p>{{ task.description }}</p>
         {% endif %}
-        <hr class="border-ink/10 dark:border-white/10">
-        <dl class="space-y-2">
-            <div><span class="font-semibold">{% trans "Author" %}:</span> {{ task.author }}</div>
-            <div><span class="font-semibold">{% trans "Executor" %}:</span> {{ task.executor|default_if_none:"" }}</div>
-            <div><span class="font-semibold">{% trans "Status" %}:</span> {{ task.status }}</div>
-            <div><span class="font-semibold">{% trans "Created at" %}:</span> {{ task.created_at|date:"d.m.Y H:i" }}</div>
-        </dl>
+        <hr class="border-gray-200">
+        <div>
+            <span class="font-semibold">{% trans "Author" %}:</span>
+            {{ task.author }}
+        </div>
+        <div>
+            <span class="font-semibold">{% trans "Executor" %}:</span>
+            {{ task.executor|default_if_none:"" }}
+        </div>
+        <div>
+            <span class="font-semibold">{% trans "Status" %}:</span>
+            {{ task.status }}
+        </div>
+        <div>
+            <span class="font-semibold">{% trans "Created at" %}:</span>
+            {{ task.created_at|date:"d.m.Y H:i" }}
+        </div>
         <div>
             <h2 class="mb-2 font-semibold">{% trans "Labels" %}:</h2>
             <ul class="list-disc pl-6">
@@ -31,9 +41,9 @@
             </ul>
         </div>
         <div class="flex gap-4">
-            <a class="link-accent" href="{% url 'task_update' task.pk %}">{% trans "Change" %}</a>
-            <a class="link-accent" href="{% url 'task_delete' task.pk %}">{% trans "Delete" %}</a>
+            <a class="text-blue-600 hover:underline" href="{% url 'task_update' task.pk %}">{% trans "Change" %}</a>
+            <a class="text-blue-600 hover:underline" href="{% url 'task_delete' task.pk %}">{% trans "Delete" %}</a>
         </div>
     </div>
-</article>
+</div>
 {% endblock %}

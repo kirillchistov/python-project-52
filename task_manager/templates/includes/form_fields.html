@@ -3,16 +3,16 @@
 {% csrf_token %}
 {% for field in form %}
     <div class="mb-4">
-        <label for="{{ field.id_for_label }}" class="block text-sm font-semibold">{{ field.label }}</label>
+        <label for="{{ field.id_for_label }}" class="block font-medium">{{ field.label }}</label>
         {% if field.errors %}
-            <div class="text-sm text-coral-dark dark:text-coral">{{ field.errors }}</div>
+            <div class="text-red-600">{{ field.errors }}</div>
         {% endif %}
         {{ field }}
         {% if field.help_text %}
-            <p class="mt-1 text-sm text-ink-muted dark:text-sand/60">{{ field.help_text }}</p>
+            <p class="mt-1 text-sm text-gray-600">{{ field.help_text }}</p>
         {% endif %}
     </div>
 {% endfor %}
 {% if form.non_field_errors %}
-    <div class="mb-4 text-sm text-coral-dark dark:text-coral" role="alert">{{ form.non_field_errors }}</div>
+    <div class="mb-4 text-red-600" role="alert">{{ form.non_field_errors }}</div>
 {% endif %}

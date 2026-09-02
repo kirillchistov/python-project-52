@@ -1,13 +1,12 @@
 /* Исходный CSS: утилиты Tailwind, тема Hearts (Plaky-like), плагин форм.
    Сборка: python manage.py tailwind build → assets/css/tailwind.css */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --color-coral: #ff665a;
   --color-coral-dark: #e24e43;
   --color-ink: #18212f;
@@ -16,12 +15,6 @@
   --color-sand-2: #f3e8dc;
   --color-night: #0f141c;
   --color-night-card: #1c2430;
-}
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 @layer components {
