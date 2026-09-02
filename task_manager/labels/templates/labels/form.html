@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}Создание и правка метки — поле Имя, кнопки Создать / Изменить.{% endcomment %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-3xl font-bold">{{ title }}</h1>
+<form method="post" class="max-w-xl">
+    {% include "includes/form_fields.html" %}
+    <button type="submit" class="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+        {{ button_text }}
+    </button>
+</form>
+{% endblock %}

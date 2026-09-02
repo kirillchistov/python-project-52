@@ -63,6 +63,9 @@ class TaskCrudTest(TestCase):
         self.assertContains(response, "Исполнитель")
         self.assertContains(response, "Метки")
         self.assertContains(response, "Создать")
+        self.assertContains(response, 'name="labels"')
+        self.assertContains(response, 'id="id_labels"')
+        self.assertContains(response, "multiple")
 
     def test_create_task_sets_author(self):
         self.client.login(username="hexlet", password=PASSWORD)
@@ -118,6 +121,25 @@ class TaskCrudTest(TestCase):
         self.assertContains(response, "Задача успешно изменена")
         self.task.refresh_from_db()
         self.assertEqual(self.task.description, "Updated")
+
+    def test_update_task_with_multiple_labels(self):
+        bug = Label.objects.get(name="Bug")
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.post(
+            reverse("task_update", args=[self.task.pk]),
+            {
+                "name": "Prepare report",
+                "description": "Demo task",
+                "status": self.status.pk,
+                "labels": [self.label.pk, bug.pk],
+            },
+            follow=True,
+        )
+        self.assertRedirects(
+            response, reverse("tasks"), status_code=302, target_status_code=200
+        )
+        self.task.refresh_from_db()
+        self.assertEqual(set(self.task.labels.all()), {self.label, bug})
 
     def test_author_can_delete_task(self):
         self.client.login(username="hexlet", password=PASSWORD)

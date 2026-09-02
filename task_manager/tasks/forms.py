@@ -12,7 +12,7 @@ class TaskForm(forms.ModelForm):
         fields = ("name", "description", "status", "executor", "labels")
         widgets = {
             "description": forms.Textarea(attrs={"rows": 6}),
-            "labels": forms.SelectMultiple(),
+            "labels": forms.SelectMultiple(attrs={"multiple": True, "size": 5}),
         }
 
     def __init__(self, *args, **kwargs):

@@ -6,5 +6,13 @@
       "name": "Important",
       "created_at": "2024-01-15T12:00:00Z"
     }
+  },
+  {
+    "model": "labels.label",
+    "pk": 2,
+    "fields": {
+      "name": "Bug",
+      "created_at": "2024-01-16T12:00:00Z"
+    }
   }
 ]

@@ -182,3 +182,24 @@ msgstr "Задача успешно удалена"
 
 msgid "A task can be deleted only by its author"
 msgstr "Задачу может удалить только ее автор"
+
+msgid "Create label"
+msgstr "Создать метку"
+
+msgid "Edit label"
+msgstr "Изменение метки"
+
+msgid "Delete label"
+msgstr "Удаление метки"
+
+msgid "Label successfully created"
+msgstr "Метка успешно создана"
+
+msgid "Label successfully updated"
+msgstr "Метка успешно изменена"
+
+msgid "Label successfully deleted"
+msgstr "Метка успешно удалена"
+
+msgid "Cannot delete label"
+msgstr "Невозможно удалить метку"
