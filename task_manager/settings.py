@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 import dj_database_url
+import sentry_sdk
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,6 +19,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "insecure-dev-key-change-in-production")
 
 DEBUG = os.getenv("DEBUG", "True").lower() in {"true", "1", "yes"}
+
+# Коллектор ошибок (Bugsink/Sentry): DSN только из окружения, в репозиторий не кладём.
+SENTRY_DSN = os.getenv("SENTRY_DSN")
+if SENTRY_DSN and "test" not in sys.argv:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        environment="development" if DEBUG else "production",
+        send_default_pii=True,
+        traces_sample_rate=0,
+    )
 
 
 def _allowed_hosts() -> list[str]:

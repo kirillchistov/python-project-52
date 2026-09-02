@@ -141,3 +141,11 @@ class UserCrudTest(TestCase):
         response = self.client.get(reverse("user_update", args=[self.user.pk]))
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse("login"), response.url)
+
+
+class SentryDebugViewTest(TestCase):
+    """Проверка, что /sentry-debug/ роняет запрос — так проверяют коллектор."""
+
+    def test_sentry_debug_raises(self):
+        with self.assertRaises(ZeroDivisionError):
+            self.client.get(reverse("sentry_debug"))
