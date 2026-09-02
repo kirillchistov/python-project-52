@@ -199,3 +199,94 @@ class TaskCrudTest(TestCase):
         response = self.client.get(reverse("task_delete", args=[self.task.pk]))
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse("login"), response.url)
+
+
+class TaskFilterTest(TestCase):
+    """Фильтрация списка: статус, исполнитель, метка, только свои."""
+
+    fixtures = ["users.json", "statuses.json", "labels.json", "tasks.json"]
+
+    def setUp(self):
+        self.author = User.objects.get(username="hexlet")
+        self.other = User.objects.get(username="another")
+        self.status_new = Status.objects.get(name="New")
+        self.status_progress = Status.objects.get(name="In progress")
+        self.label_important = Label.objects.get(name="Important")
+        self.label_bug = Label.objects.get(name="Bug")
+        self.own_task = Task.objects.get(name="Prepare report")
+        self.other_task = Task.objects.create(
+            name="Fix bug",
+            description="Other author",
+            status=self.status_progress,
+            author=self.other,
+            executor=self.other,
+        )
+        self.other_task.labels.add(self.label_bug)
+        self.mixed_task = Task.objects.create(
+            name="Write docs",
+            description="Own task, other executor",
+            status=self.status_progress,
+            author=self.author,
+            executor=self.other,
+        )
+
+    def test_filter_form_fields(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(reverse("tasks"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'name="status"')
+        self.assertContains(response, 'id="id_status"')
+        self.assertContains(response, 'name="executor"')
+        self.assertContains(response, 'id="id_executor"')
+        self.assertContains(response, 'name="labels"')
+        self.assertContains(response, 'id="id_labels"')
+        self.assertContains(response, 'name="self_tasks"')
+        self.assertContains(response, "Статус")
+        self.assertContains(response, "Исполнитель")
+        self.assertContains(response, "Метка")
+        self.assertContains(response, "Только свои задачи")
+        self.assertContains(response, "Показать")
+
+    def test_filter_by_status(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(
+            reverse("tasks"), {"status": self.status_new.pk}
+        )
+        self.assertContains(response, "Prepare report")
+        self.assertNotContains(response, "Fix bug")
+        self.assertNotContains(response, "Write docs")
+
+    def test_filter_by_executor(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(
+            reverse("tasks"), {"executor": self.other.pk}
+        )
+        self.assertContains(response, "Fix bug")
+        self.assertContains(response, "Write docs")
+        self.assertNotContains(response, "Prepare report")
+
+    def test_filter_by_label(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(
+            reverse("tasks"), {"labels": self.label_bug.pk}
+        )
+        self.assertContains(response, "Fix bug")
+        self.assertNotContains(response, "Prepare report")
+        self.assertNotContains(response, "Write docs")
+
+    def test_filter_own_tasks(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(reverse("tasks"), {"self_tasks": "on"})
+        self.assertContains(response, "Prepare report")
+        self.assertContains(response, "Write docs")
+        self.assertNotContains(response, "Fix bug")
+
+    def test_filter_status_and_own_tasks(self):
+        self.client.login(username="hexlet", password=PASSWORD)
+        response = self.client.get(
+            reverse("tasks"),
+            {"status": self.status_progress.pk, "self_tasks": "on"},
+        )
+        self.assertContains(response, "Write docs")
+        self.assertNotContains(response, "Prepare report")
+        self.assertNotContains(response, "Fix bug")

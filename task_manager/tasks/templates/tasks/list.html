@@ -11,6 +11,38 @@
     {% trans "Create task" %}
 </a>
 
+<form method="get" action="{% url 'tasks' %}" class="mb-6 rounded-md border border-gray-200 p-4">
+    <div class="grid gap-4 md:grid-cols-3">
+        <div>
+            <label for="{{ filter.form.status.id_for_label }}" class="block font-medium">
+                {{ filter.form.status.label }}
+            </label>
+            {{ filter.form.status }}
+        </div>
+        <div>
+            <label for="{{ filter.form.executor.id_for_label }}" class="block font-medium">
+                {{ filter.form.executor.label }}
+            </label>
+            {{ filter.form.executor }}
+        </div>
+        <div>
+            <label for="{{ filter.form.labels.id_for_label }}" class="block font-medium">
+                {{ filter.form.labels.label }}
+            </label>
+            {{ filter.form.labels }}
+        </div>
+    </div>
+    <div class="mt-4 flex items-center gap-2">
+        {{ filter.form.self_tasks }}
+        <label for="{{ filter.form.self_tasks.id_for_label }}">
+            {{ filter.form.self_tasks.label }}
+        </label>
+    </div>
+    <button type="submit" class="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+        {% trans "Show" %}
+    </button>
+</form>
+
 <table class="mt-4 w-full text-left">
     <thead class="border-b border-gray-200">
         <tr>

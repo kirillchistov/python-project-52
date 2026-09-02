@@ -203,3 +203,9 @@ msgstr "Метка успешно удалена"
 
 msgid "Cannot delete label"
 msgstr "Невозможно удалить метку"
+
+msgid "Label"
+msgstr "Метка"
+
+msgid "Only own tasks"
+msgstr "Только свои задачи"
